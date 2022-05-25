@@ -1,0 +1,2 @@
+# Java_final_work
+这是Java程序设计的大作业，在这个repository中包含爬虫与json数据的初步处理

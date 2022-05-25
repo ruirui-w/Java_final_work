@@ -16,8 +16,8 @@ public class WeiboTester {
     WebDriver driver;
     boolean isGetCookie = false;
     String cookiePath = "weibocookie.txt";
-    String beginDay = "2022-04-24";
-    String endDay = "2022-04-30";
+    String beginDay = "2022-05-14";
+    String endDay = "2022-05-25";
     int articleNum;
     Set<String> keywords = new HashSet<String>() {{
         add("Java");
@@ -187,7 +187,7 @@ public class WeiboTester {
             selectList.get(1).click();
 
             try {
-                GetDetails("D:\\github\\Java final work\\json_Java_Apr\\"+keyword+"_"+fileName);
+                GetDetails("D:\\github\\Java final work\\json_Java_May\\"+keyword+"_"+fileName);
             }
             catch(Exception e)
             {
