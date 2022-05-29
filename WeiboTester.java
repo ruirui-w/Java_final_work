@@ -16,11 +16,11 @@ public class WeiboTester {
     WebDriver driver;
     boolean isGetCookie = false;
     String cookiePath = "weibocookie.txt";
-    String beginDay = "2022-05-14";
+    String beginDay = "2022-05-15";
     String endDay = "2022-05-25";
     int articleNum;
     Set<String> keywords = new HashSet<String>() {{
-        add("Java");
+        add("Python");
     }};
     Set<String> mids = new HashSet<String>();
 
@@ -48,6 +48,7 @@ public class WeiboTester {
 
     /*Set Cookies*/
     public void SetCookies() throws IOException, ClassNotFoundException, InterruptedException {
+        //如果已经登陆过，则读入预先设置的浏览Cookies，以便使得每次爬取不需要重新登录微博账号
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         ChromeOptions options = new ChromeOptions();
         Map<String, Object> prefs = new HashMap<String, Object>();
@@ -88,12 +89,16 @@ public class WeiboTester {
 
 
     public void GetInfo(Calendar dd) throws InterruptedException, IOException {
+        //收到日期，给GetHourInfo一个高级搜索的时间参数
         for(int i = 0; i <= 23; ++i){
             GetHourInfo(dd, i);
         }
     }
 
+
     public void GetHourInfo(Calendar dd, int hour) throws InterruptedException, IOException {
+        //这个函数用来实现每一个小时的高级搜索，这样做的好处是可以使信息以每一个小时的形式及时保存
+        //防止爬取了一天的数据但中间网络断了，直接损失一天的数据
         System.out.println(dd.getTime().toString()+"hour:"+hour);
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         WebElement searchButton = driver.findElement(By.className("woo-input-main"));
@@ -124,7 +129,7 @@ public class WeiboTester {
             searchButton.sendKeys(keyword);
             //searchButton.sendKeys(Keys.ENTER);
 
-            //Set the start time
+            //设置开始时间
             stimeButton = driver.findElement(By.name("stime"));
             stimeButton.click();
 
@@ -187,7 +192,7 @@ public class WeiboTester {
             selectList.get(1).click();
 
             try {
-                GetDetails("D:\\github\\Java final work\\json_Java_May\\"+keyword+"_"+fileName);
+                GetDetails("D:\\github\\Java final work\\json_html_May\\"+keyword+"_"+fileName);
             }
             catch(Exception e)
             {
@@ -204,6 +209,7 @@ public class WeiboTester {
     }
 
     public void GetDetails(String fileName) throws IOException, JSONException {
+        //这个部分用来获得某篇微博的详细信息
         JSONArray jsonArray = new JSONArray();
         JSONObject jsonObject = null;
         String textContent, mainHandle, userHandle=null;
@@ -371,7 +377,7 @@ public class WeiboTester {
         }
 
 
-        //write into the file
+        //write into the file 以json形式写入文件
 
         OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(fileName),"UTF-8");
         osw.write(jsonArray.toString());
