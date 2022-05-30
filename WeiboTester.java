@@ -14,9 +14,9 @@ import java.util.concurrent.TimeUnit;
 
 public class WeiboTester {
     WebDriver driver;
-    boolean isGetCookie = false;
+    boolean isGetCookie =false;
     String cookiePath = "weibocookie.txt";
-    String beginDay = "2022-05-15";
+    String beginDay = "2022-05-01";
     String endDay = "2022-05-25";
     int articleNum;
     Set<String> keywords = new HashSet<String>() {{
@@ -90,7 +90,7 @@ public class WeiboTester {
 
     public void GetInfo(Calendar dd) throws InterruptedException, IOException {
         //收到日期，给GetHourInfo一个高级搜索的时间参数
-        for(int i = 0; i <= 23; ++i){
+        for(int i = 0; i <= 24; ++i){
             GetHourInfo(dd, i);
         }
     }
@@ -192,7 +192,7 @@ public class WeiboTester {
             selectList.get(1).click();
 
             try {
-                GetDetails("D:\\github\\Java final work\\json_html_May\\"+keyword+"_"+fileName);
+                GetDetails("D:\\github\\Java final work\\json_Python_May\\"+keyword+"_"+fileName);
             }
             catch(Exception e)
             {
@@ -351,7 +351,7 @@ public class WeiboTester {
 
                     // the user area
                     try {
-                        driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
+                        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
                         userArea = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/main/div/div/div[2]/div[1]/div[1]/div[3]/div/div/div[1]/div[3]/div/div/div[2]/div"));
                         jsonObject.put("Area", userArea.getText().substring(5));
                         //jsonArray.put(jsonObject);
