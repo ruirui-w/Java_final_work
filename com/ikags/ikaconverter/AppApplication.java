@@ -10,11 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.time.LocalDateTime;
-/**
- * ��Ҫ����
- * @author airzhangfish
- *
- */
+
 public class AppApplication extends JFrame implements ActionListener {
 
 	String mVerion="-Version 1.0.0";
