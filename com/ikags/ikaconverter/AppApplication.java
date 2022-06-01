@@ -20,7 +20,7 @@ public class AppApplication extends JFrame implements ActionListener {
 	String mVerion="-Version 1.0.0";
 	String titlename = "Ika netfile crawler    "+mVerion;
 	// ����
-	private String aboutStr ="Creator by \n airzhangfish";
+	private String aboutStr ="Creator by \n lizirui";
 
 	private static final long serialVersionUID = 1L;
 	private JTabbedPane jtp;
@@ -33,8 +33,8 @@ public class AppApplication extends JFrame implements ActionListener {
 	private JMenuItem jMenuHelpAbout = new JMenuItem("About");
 	private JMenuItem jMenuHelpHomepage = new JMenuItem("Homepage");
 
-	private JMenuItem jMenuFileLoad1 = new JMenuItem("Read Json2csv file...");
-	private JMenuItem jMenuFileLoad2 = new JMenuItem("Read multi json files 2 one json file...");
+	private JMenuItem jMenuFileLoad1 = new JMenuItem("Read Json output csv file...");
+	private JMenuItem jMenuFileLoad2 = new JMenuItem("Read multi json files output one json file...");
 
 	private JMenuItem jMenuFileLoad3 = new JMenuItem("Read xml2csv file...");
 	private JMenuItem jMenuFileLoad4 = new JMenuItem("Read multi xml files 2 one xml file...");
